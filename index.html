@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" ref="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css">
+    <style>
+
+      html {
+        --base-font-size: 1rem;
+        --base-line-height: calc(var(--line-height) * var(--base-font-size));
+        --line-height: 1.4;
+
+        font-size: 100%;
+        line-height: var(--line-height);
+      }
+
+      body {
+        background-color: #f5f5f5;
+        font-family: 'Lato', sans-serif;
+        font-size: var(--base-font-size);
+        font-weight: 300;
+        margin: 0 auto;
+      }
+
+      body > section {
+        margin-bottom: var(--base-line-height);
+      }
+
+      header {
+        padding: var(--base-line-height);
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin: calc(var(--base-line-height)/2) 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .fs-large {
+        font-size: 1.5rem;
+      }
+
+      .drop {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        background-image: url(down-arrow.svg);
+        background-origin: inherit;
+        background-position: right .5rem top 50%;
+        background-repeat: no-repeat;
+        background-size: 1rem;
+        border-radius: 1px;
+        border: 1px solid #d7d7d7;
+        color: #4c4c4c;
+        height: auto; /* overriding skeleton */
+        margin: 0 calc(var(--base-line-height) / 3);
+        padding: var(--base-line-height) calc(var(--base-line-height) * 3) var(--base-line-height) var(--base-line-height);
+        vertical-align: middle;
+        width: auto;
+      }
+
+      .tc {
+        text-align: center;
+      }
+
+      .bg-white {
+        background-color: #fff;
+      }
+
+      .legend {
+        display: table;
+        height: 10px;
+        width: 100%;
+
+      }
+      .legend > span {
+        display: table-cell;
+        height: 10px;
+      }
+
+      .seed__widget {
+        margin-bottom: var(--base-line-height);
+      }
+
+      .p-one { background-color: rgb(141, 179, 96); }
+      .p-two { background-color: rgb(250, 148, 24); }
+      .p.three { background-color: rgb(96, 96, 96); }
+      .p-four { background-color: rgb(5, 102, 33); }
+      .p-five { background-color: rgb(11, 102, 89); }
+      .p-six { background-color: rgb(7, 249, 178); }
+      .p-seven { background-color: rgb(0, 0, 255); }
+      .p-eight { background-color: rgb(255, 0, 0); }
+      .p-nine { background-color: rgb(128, 128, 255); }
+      .p-ten { background-color: rgb(144, 144, 160); }
+      .p-eleven { background-color: rgb(160, 160, 255); }
+      .p-twelve { background-color: rgb(255, 255, 255); }
+      .p-thirteen { background-color: rgb(160, 160, 160); }
+      .p-fourteen { background-color: rgb(255, 0, 255); }
+      .p-fifteen { background-color: rgb(160, 0, 255); }
+      .p-sixteen { background-color: rgb(250, 222, 85); }
+      .p-seventeen { background-color: rgb(210, 95, 18); }
+
+      .p-ocean { background-color: rgb(0, 0, 112); }
+      .p-plains { background-color: rgb(141, 179, 96); }
+      .p-desert { background-color: rgb(250, 148, 24); }
+      .p-hills { background-color: rgb(96, 96, 96); }
+      .p-forest { background-color: rgb(5, 102, 33); }
+      .p-taiga { background-color: rgb(11, 102, 89); }
+      .p-swamp { background-color: rgb(7, 249, 178); }
+      .p-river { background-color: rgb(0, 0, 255); }
+      .p-snow { background-color: rgb(250, 240, 192); }
+      .p-mushroom-island { background-color: rgb(255, 0, 255); }
+      .p-beach { background-color: rgb(250, 222, 85); }
+      .p-jungle { background-color: rgb(83, 123, 9); }
+      .p-stone-beach { background-color: rgb(162, 162, 132); }
+      .p-savanna { background-color: rgb(189, 178, 95); }
+      .p-mesa { background-color: rgb(217, 69, 21); }
+      .p-ice-spikes { background-color: rgb(210, 255, 255); }
+
+      .b-ocean { background-color: rgb(0, 0, 112); }
+      .b-plains { background-color: rgb(141, 179, 96); }
+      .b-desert { background-color: rgb(250, 148, 24); }
+      .b-extreme-hills { background-color: rgb(96, 96, 96); }
+      .b-forest { background-color: rgb(5, 102, 33); }
+      .b-taiga { background-color: rgb(11, 102, 89); }
+      .b-swampland { background-color: rgb(7, 249, 178); }
+      .b-river { background-color: rgb(0, 0, 255); }
+      .b-frozen-ocean { background-color: rgb(144, 144, 160); }
+      .b-frozen-river { background-color: rgb(160, 160, 255); }
+      .b-ice-plains { background-color: rgb(255, 255, 255); }
+      .b-ice-mountains { background-color: rgb(160, 160, 160); }
+      .b-mooshroom-island { background-color: rgb(255, 0, 255); }
+      .b-mooshroom-island-shore { background-color: rgb(160, 0, 255); }
+      .b-beach { background-color: rgb(250, 222, 85); }
+      .b-desert-hills { background-color: rgb(210, 95, 18); }
+      .b-forest-hills { background-color: rgb(34, 85, 28); }
+      .b-taiga-hills { background-color: rgb(22, 57, 51); }
+      .b-extreme-hills-edge { background-color: rgb(114, 120, 154); }
+      .b-jungle { background-color: rgb(83, 123, 9); }
+      .b-jungle-hills { background-color: rgb(44, 66, 5); }
+      .b-jungle-edge { background-color: rgb(98, 139, 23); }
+      .b-deep-ocean { background-color: rgb(0, 0, 48); }
+      .b-stone-beach { background-color: rgb(162, 162, 132); }
+      .b-cold-beach { background-color: rgb(250, 240, 192); }
+      .b-birch-forest { background-color: rgb(48, 116, 68); }
+      .b-birch-foest-hills { background-color: rgb(31, 95, 50); }
+      .b-roofed-forest { background-color: rgb(64, 81, 26); }
+      .b-cold-taiga { background-color: rgb(49, 85, 74); }
+      .b-cold-taiga-hills { background-color: rgb(36, 63, 54); }
+      .b-mega-taiga { background-color: rgb(89, 102, 81); }
+      .b-meta-taiga-hills { background-color: rgb(69, 79, 62); }
+      .b-extreme-hills-plus { background-color: rgb(80, 112, 80); }
+      .b-savanna { background-color: rgb(189, 178, 95); }
+      .b-savanna-plateau { background-color: rgb(167, 157, 100); }
+      .b-mesa { background-color: rgb(217, 69, 21); }
+      .b-mesa-plateau-f { background-color: rgb(176, 151, 101); }
+      .b-mesa-plateau { background-color: rgb(202, 140, 101); }
+      .b-sunflower-plains { background-color: rgb(181, 219, 136); }
+      .b-desert-m { background-color: rgb(255, 188, 64); }
+      .b-extreme-hills-m { background-color: rgb(136, 136, 136); }
+      .b-flower-forest { background-color: rgb(106, 116, 37); }
+      .b-taiga-m { background-color: rgb(51, 142, 129); }
+      .b-swampland-m { background-color: rgb(47, 255, 218); }
+      .b-ice-plains-spikes { background-color: rgb(210, 255, 255); }
+      .b-jungle-m { background-color: rgb(123, 163, 49); }
+      .b-jungle-edge-m { background-color: rgb(138, 179, 63); }
+      .b-birch-forest-m { background-color: rgb(88, 156, 108); }
+      .b-birch-forest-hills-m { background-color: rgb(71, 135, 90); }
+      .b-roofed-forest-m { background-color: rgb(104, 121, 66); }
+      .b-cold-taiga-m { background-color: rgb(89, 125, 114); }
+      .b-meta-spruce-taiga { background-color: rgb(129, 142, 121); }
+      .b-redwood-taiga-hills-m { background-color: rgb(129, 142, 121); }
+      .b-extreme-hills-plus-m { background-color: rgb(120, 152, 120); }
+      .b-savanna-m { background-color: rgb(229, 218, 135); }
+      .b-savanna-plateau-m { background-color: rgb(207, 197, 140); }
+      .b-mesa-bryce { background-color: rgb(255, 109, 61); }
+      .b-mesa-plateau-f-m { background-color: rgb(216, 191, 141); }
+      .b-mesa-plateau-m { background-color: rgb(242, 180, 141); }
+)
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="fs-large tc">
+        I want to spawn in a
+        <select class="drop">
+          <option disabled="disabled" selected="selected">---</option>
+          <option value="beach">Beach</option>
+          <option value="desert">Desert</option>
+          <option value="forest">Forest</option>
+          <option value="hills">Hills</option>
+          <option value="ice-spikes">Ice Spikes</option>
+          <option value="jungle">Jungle</option>
+          <option value="mesa">Mesa</option>
+          <option value="mooshroom-island">Mooshroom Island</option>
+          <option value="ocean">Ocean</option>
+          <option value="plaines">Plains</option>
+          <option value="river">River</option>
+          <option value="savanah">Savanna</option>
+          <option value="snow">Snow</option>
+          <option value="stone-beach">Stone Beach</option>
+          <option value="swamp">Swamp</option>
+          <option value="taiga">Taiga</option>
+        </select>
+        biome
+      </p>
+    </header>
+
+    <!-- <section class="bg-white">
+      <p class="tc">
+        With these biomes nearby...
+      </p>
+      <button class="button beach">Beach</button>
+      <button class="button desert">Desert</button>
+      <button class="button forest">Forest</button>
+      <button class="button hills">Hills</button>
+      <button class="button ice-spikes">Ice Spikes</button>
+      <button class="button jungle">Jungle</button>
+      <button class="button mesa">Mesa</button>
+      <button class="button mooshroom-island">Mooshroom Island</button>
+      <button class="button ocean">Ocean</button>
+      <button class="button plaines">Plains</button>
+      <button class="button river">River</button>
+      <button class="button savanah">Savanna</button>
+      <button class="button snow">Snow</button>
+      <button class="button stone-beach">Stone Beach</button>
+      <button class="button swamp">Swamp</button>
+      <button class="button taiga">Taiga</button>
+    </section> -->
+
+    <section class="row">
+      <div class="small-12 medium-6 large-4 columns">
+        <article class="seed__widget bg-white">
+          <img src="worlds/40000000306.png" class="u-max-full-width" />
+          <h3 class="tc">40000000306</h3>
+          <p>Spawn biomes</p>
+          <div class="legend">
+            <span data-balloon="Swamp" data-balloon-pos="up" class="p-swamp" style="width: 39%"></span>
+            <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 24%"></span>
+            <span data-balloon="Plains" data-balloon-pos="up" class="p-plains" style="width: 16%"></span>
+            <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 13%"></span>
+            <span data-balloon="River" data-balloon-pos="up" class="p-river" style="width: 5%"></span>
+            <span data-balloon="Hills" data-balloon-pos="up" class="p-hills" style="width: 2%"></span>
+          </div>
+        </article>
+      </div>
+      <div class="small-12 medium-6 large-4 columns">
+        <article class="seed__widget bg-white">
+          <img src="worlds/40000000306.png" class="u-max-full-width" />
+          <h3 class="tc">5520</h3>
+          <p>Spawn biomes</p>
+          <div class="legend">
+            <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 53%"></span>
+            <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 15%"></span>
+            <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 14%"></span>
+            <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 6%"></span>
+            <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 3%"></span>
+            <span data-balloon="Desert" data-balloon-pos="up" class="p-desert" style="width: 3%"></span>
+            <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 3%"></span>
+            <span data-balloon="Stone beach" data-balloon-pos="up" class="p-stone-beach" style="width: 2%"></span>
+          </div>
+        </article>
+      </div>
+      <div class="small-12 medium-6 large-4 columns">
+        <article class="seed__widget bg-white">
+          <img src="worlds/40000000306.png" class="u-max-full-width" />
+          <h3 class="tc">5520</h3>
+          <p>Spawn biomes</p>
+          <div class="legend">
+            <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 53%"></span>
+            <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 15%"></span>
+            <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 14%"></span>
+            <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 6%"></span>
+            <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 3%"></span>
+            <span data-balloon="Desert" data-balloon-pos="up" class="p-desert" style="width: 3%"></span>
+            <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 3%"></span>
+            <span data-balloon="Stone beach" data-balloon-pos="up" class="p-stone-beach" style="width: 2%"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- <section class="row">
+        <div class="small-12 medium-6 large-4 columns ">
+          <article class="seed__widget bg-white">
+            <img src="worlds/40000000306.png" class="u-max-full-width" />
+            <h3 class="tc">40000000306</h3>
+            <p>Spawn biomes</p>
+            <div class="legend">
+              <span data-balloon="Swamp" data-balloon-pos="up" class="p-swamp" style="width: 39%"></span>
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 24%"></span>
+              <span data-balloon="Plains" data-balloon-pos="up" class="p-plains" style="width: 16%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 13%"></span>
+              <span data-balloon="River" data-balloon-pos="up" class="p-river" style="width: 5%"></span>
+              <span data-balloon="Hills" data-balloon-pos="up" class="p-hills" style="width: 2%"></span>
+            </div>
+            <p>Surrounding biomes</p>
+            <div class="legend">
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 35%"></span>
+              <span data-balloon="Plains" data-balloon-pos="up" class="p-plains" style="width: 11%"></span>
+              <span data-balloon="Jungle" data-balloon-pos="up" class="p-jungle" style="width: 16%"></span>
+              <span data-balloon="Hills" data-balloon-pos="up" class="p-hills" style="width: 13%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 7%"></span>
+              <span data-balloon="River" data-balloon-pos="up" class="p-river" style="width: 5%"></span>
+              <span data-balloon="Swamp" data-balloon-pos="up" class="p-swamp" style="width: 2%"></span>
+              <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 1%"></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="small-12 medium-6 large-4 columns ">
+          <article class="seed__widget bg-white">
+            <img src="worlds/5520.png" class="u-max-full-width" />
+            <h3 class="tc">5520</h3>
+            <p>Spawn biomes</p>
+            <div class="legend">
+              <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 53%"></span>
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 15%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 14%"></span>
+              <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 6%"></span>
+              <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 3%"></span>
+              <span data-balloon="Desert" data-balloon-pos="up" class="p-desert" style="width: 3%"></span>
+              <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 3%"></span>
+              <span data-balloon="Stone beach" data-balloon-pos="up" class="p-stone-beach" style="width: 2%"></span>
+            </div>
+            <p>Surrounding biomes</p>
+            <div class="legend">
+              <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 31%"></span>
+              <span data-balloon="Plains" data-balloon-pos="up" class="p-plains" style="width: 13%"></span>
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 18%"></span>
+              <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 9%"></span>
+              <span data-balloon="Hills" data-balloon-pos="up" class="p-hills" style="width: 5%"></span>
+              <span data-balloon="River" data-balloon-pos="up" class="p-river" style="width: 4%"></span>
+              <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 4%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 3%"></span>
+              <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 2%"></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="small-12 medium-6 large-4 columns ">
+          <article class="seed__widget bg-white">
+            <img src="worlds/5520.png" class="u-max-full-width" />
+            <h3 class="tc">5520</h3>
+            <p>Spawn biomes</p>
+            <div class="legend">
+              <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 53%"></span>
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 15%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 14%"></span>
+              <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 6%"></span>
+              <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 3%"></span>
+              <span data-balloon="Desert" data-balloon-pos="up" class="p-desert" style="width: 3%"></span>
+              <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 3%"></span>
+              <span data-balloon="Stone beach" data-balloon-pos="up" class="p-stone-beach" style="width: 2%"></span>
+            </div>
+            <p>Surrounding biomes</p>
+            <div class="legend">
+              <span data-balloon="Ocean" data-balloon-pos="up" class="p-ocean" style="width: 31%"></span>
+              <span data-balloon="Plains" data-balloon-pos="up" class="p-plains" style="width: 13%"></span>
+              <span data-balloon="Forest" data-balloon-pos="up" class="p-forest" style="width: 18%"></span>
+              <span data-balloon="Savanna" data-balloon-pos="up" class="p-savanna" style="width: 9%"></span>
+              <span data-balloon="Hills" data-balloon-pos="up" class="p-hills" style="width: 5%"></span>
+              <span data-balloon="River" data-balloon-pos="up" class="p-river" style="width: 4%"></span>
+              <span data-balloon="Beach" data-balloon-pos="up" class="p-beach" style="width: 4%"></span>
+              <span data-balloon="Taiga" data-balloon-pos="up" class="p-taiga" style="width: 3%"></span>
+              <span data-balloon="Swampland" data-balloon-pos="up" class="p-swamp" style="width: 2%"></span>
+            </div>
+          </article>
+        </div>
+    </section> -->
+  </body>
+</html>
